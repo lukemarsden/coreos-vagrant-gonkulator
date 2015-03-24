@@ -274,6 +274,7 @@ config.vm.box = "coreos-%s" % $update_channel
      ##do the aws setup
      ["aws"].each do |aws|
         config.vm.provider aws do |a, override|
+                a.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 100 }]
                 a.access_key_id = ENV['AWS_KEY']
                 a.secret_access_key = ENV['AWS_SECRET']
                 a.keypair_name = ENV['AWS_KEYNAME']
